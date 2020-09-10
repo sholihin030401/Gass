@@ -13,17 +13,17 @@
         app:cardCornerRadius="12dp"
         app:cardElevation="5dp"
         style="@style/MarginFormEdittext">
-    <EditText
-        android:id="@+id/nama_impian"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/nama_impian"
-        android:inputType="text"
-        android:padding="8dp"
-        android:layout_margin="10dp"
-        android:cursorVisible="true"
-        android:textSize="17sp"
-        android:fontFamily="@font/poppins_regular"/>
+        <EditText
+            android:id="@+id/nama_impian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nama_impian"
+            android:inputType="text"
+            android:padding="8dp"
+            android:layout_margin="10dp"
+            android:cursorVisible="true"
+            android:textSize="17sp"
+            android:fontFamily="@font/poppins_regular"/>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -32,27 +32,43 @@
         app:cardCornerRadius="12dp"
         app:cardElevation="5dp"
         style="@style/MarginFormEdittext">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/target_pencapaian"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        android:fontFamily="@font/poppins_medium"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/judul_pencapaian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target_pencapaian"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_medium"/>
 
-    <Spinner
-        android:id="@+id/spin_target"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:entries="@array/kat_artikel"/>
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/btn_mulai_impian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_today"
+                android:layout_below="@id/judul_pencapaian"
+                style="@style/MarginForm"
+                android:paddingBottom="10dp"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:id="@+id/mulai_impian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/waktu_pencapaian"
+                android:textSize="16sp"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/btn_mulai_impian"
+                android:layout_below="@id/judul_pencapaian"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_regular" />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -65,16 +81,16 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/txhabits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/kebiasaan_impian"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        android:fontFamily="@font/poppins_medium"/>
+            <TextView
+                android:id="@+id/txhabits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kebiasaan_impian"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_medium"/>
 
             <LinearLayout
                 android:id="@+id/layout_list"
@@ -96,8 +112,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/poppins_medium"
-                android:drawableStart="@drawable/ic_add_black_24dp"
-                android:layout_below="@id/layout_list"/>
+                android:layout_below="@id/layout_list"
+                app:drawableStartCompat="@drawable/ic_add_black_24dp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

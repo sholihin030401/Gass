@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".impian.detailHabits"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".jadwal.UpdateAgenda" />
-        <activity android:name=".SplashScreenActivity"/>
+        <activity android:name=".SplashScreenActivity" />
         <activity android:name=".literasi.VideoDetailActivity" />
         <activity android:name=".literasi.ArtikelDetailActivity" />
         <activity android:name=".impian.AddImpianActivity" />

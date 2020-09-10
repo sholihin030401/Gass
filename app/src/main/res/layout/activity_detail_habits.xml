@@ -4,19 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".cnbfragment.ImpianFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddImpian"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_black_24dp"
-        app:fabSize="normal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="20dp"/>
+    tools:context=".impian.detailHabits">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ask_goals"
@@ -27,22 +15,21 @@
         app:cardElevation="8dp">
 
         <TextView
+            android:id="@+id/idku"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bagaimana_cara_mendesain_suatu_impian"
+            android:text="Hal yang harus dilakukan sehari - hari"
             android:textSize="16sp"
             android:layout_margin="10dp"
             android:textColor="#000000"
             android:fontFamily="@font/poppins_medium"/>
     </androidx.cardview.widget.CardView>
 
-
     <FrameLayout
-        android:id="@+id/impian_container"
+        android:id="@+id/jadwal_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ask_goals">
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -51,12 +38,20 @@
                 android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_impian"
+                    android:id="@+id/rv_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/add_impian_item"/>
+                    tools:listitem="@layout/detail_impian_item"/>
 
             </RelativeLayout>
         </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddJadwal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_black_24dp"
+            app:fabSize="normal"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"/>
     </FrameLayout>
 </RelativeLayout>

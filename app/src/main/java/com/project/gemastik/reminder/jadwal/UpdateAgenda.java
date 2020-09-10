@@ -51,9 +51,6 @@ public class UpdateAgenda extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     FirebaseUser mUser;
-    private DatabaseReference reference;
-    FirebaseDatabase database;
-    GoogleSignInClient mGoogleSignInClient;
 
     RadioGroup radioGroup;
     RadioButton alarm, notif;
@@ -70,7 +67,7 @@ public class UpdateAgenda extends AppCompatActivity {
         tx_time = findViewById(R.id.mulai_agenda);
         btn_time = findViewById(R.id.btn_mulai_agenda);
         final Spinner ulangi = findViewById(R.id.spin_agenda);
-        btn_simpan = findViewById(R.id.btnsimpan_agenda);
+        btn_simpan = findViewById(R.id.btnupdate_agenda);
 
         radioGroup = findViewById(R.id.radiogrup_agenda);
         alarm = findViewById(R.id.alarm_agenda);
@@ -78,20 +75,12 @@ public class UpdateAgenda extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
-        reference = database.getReference("Agenda");
-
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(UpdateAgenda.this);
-        if (acct != null) {
-            personEmail = acct.getEmail();
-
-        }else {
-            personEmail = mUser.getEmail();
-        }
 
         Intent intent = getIntent();
-        String timeStamp = intent.getStringExtra("timeStamp");
+        final String timeStamp = intent.getStringExtra("timeStamp");
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference().child("Agenda");
         Query query =reference.orderByChild("timeStamp").equalTo(timeStamp);
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -104,13 +93,25 @@ public class UpdateAgenda extends AppCompatActivity {
                     String tipe = "" + ds.child("tipe").getValue();
                     String kulangi = "" + ds.child("ulangi").getValue();
 
+                    final int UlangiKode;
+
+                    if (kulangi.equals("Satu Kali")){
+                        UlangiKode = 0;
+                    }else if (kulangi.equals("Setiap Hari")){
+                        UlangiKode = 1;
+                    }else if (kulangi.equals("Setiap Pekan")){
+                        UlangiKode = 2;
+                    }else {
+                        UlangiKode = 3;
+                    }
+
                     nama_agenda.setText(judul);
                     tx_time.setText(waktu);
-                    ulangi.setPrompt(kulangi);
+                    ulangi.setSelection(UlangiKode);
                     if (tipe.equals("Alarm")){
-                        alarm.isChecked();
+                        alarm.setChecked(true);
                     }else {
-                        notif.isChecked();
+                        notif.setChecked(true);
                     }
 
                 }
@@ -118,7 +119,7 @@ public class UpdateAgenda extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(UpdateAgenda.this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -150,7 +151,6 @@ public class UpdateAgenda extends AppCompatActivity {
                 String judul = nama_agenda.getText().toString().trim();
                 String waktu = tx_time.getText().toString().trim();
                 String Ulangi =ulangi.getSelectedItem().toString();
-                String timeStamp = String.valueOf(System.currentTimeMillis());
 
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("email",personEmail);

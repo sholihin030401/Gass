@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }
@@ -107,7 +107,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(SignUpActivity.this,"Autentikasi gagal",Toast.LENGTH_SHORT).show();
@@ -151,9 +151,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()){
                             Intent intentup = new Intent(SignUpActivity.this, LoginActivity.class);
                             startActivity(intentup);
-                            Toast.makeText(getApplicationContext(),"Berhasil!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this,"Berhasil!",Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getApplicationContext(),"Gagal membuat akun",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this,"Gagal membuat akun",Toast.LENGTH_SHORT).show();
                         }
 
                     }

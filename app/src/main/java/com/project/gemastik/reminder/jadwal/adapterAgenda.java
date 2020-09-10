@@ -70,6 +70,7 @@ public class adapterAgenda extends RecyclerView.Adapter<adapterAgenda.Myholder> 
                             Intent intent = new Intent(context,UpdateAgenda.class);
                             intent.putExtra("timeStamp",timeStamp);
                             context.startActivity(intent);
+
                         }
                     }
                 });

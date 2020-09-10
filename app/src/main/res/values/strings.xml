@@ -78,6 +78,7 @@
     <string name="mulai">Mulai</string>
     <string name="skip">Skip</string>
     <string name="selamat_datang">Selamat\nDatang</string>
+    <string name="waktu_pencapaian">Waktu Pencapaian</string>
     <string-array name="kat_artikel">
         <item>Keagamaan</item>
         <item>Motivasi Belajar</item>
